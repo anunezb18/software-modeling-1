@@ -18,7 +18,7 @@ along with PyCalculator-UD. If not, see <https://www.gnu.org/licenses/>.
 """
 
 from typing import List
-
+from datetime import datetime
 
 class Videogame:
     """This class represents a videogame"""
@@ -186,7 +186,7 @@ class Purchase:
         """This function shows the purchase"""
         print("Success purchase")
         print(
-            f"User: {self.user}, Arcade machine: {self.arcade_machine.material}, {self.arcade_machine.color}"
+            f"{datetime.now()} -> User: {self.user}, Arcade machine: {self.arcade_machine.material}, {self.arcade_machine.color}"
         )
 
 
@@ -214,5 +214,5 @@ class Manager:
         with open("purchases.txt", "w", encoding="utf-8") as file:
             for purchase in self.purchases:
                 file.write(
-                    f"User: {purchase.user}, Arcade machine: {purchase.arcade_machine.material}, {purchase.arcade_machine.color}\n"
+                    f"{datetime.now()} -> User: {purchase.user}, Arcade machine: {purchase.arcade_machine.material}, {purchase.arcade_machine.color}\n"
                 )
