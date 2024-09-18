@@ -1,6 +1,6 @@
 # Software Modeling 1
 
-This is my sofware modeling 1 repository, where all the codes are going to be uploaded.
+This is my software modeling 1 repository, where all the codes are going to be uploaded.
 
 ## Table of Contents
 
