@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "workshop 2"
+version = "2.0.0"
+description = "This is an application of an arcade machine enterprise using creational patterns."
+authors = ["anunezb <allweneedislove1984@gmail.com>"]
+license = "GNU"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
