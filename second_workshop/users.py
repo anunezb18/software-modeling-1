@@ -23,7 +23,8 @@ from typing import List
 from machines import Machine
 from videogames import Videogames
 
-#=====================================Catalog==========================================
+
+# =====================================Catalog==========================================
 class Catalog:
     """This class represents the catalog of machines registered in the system."""
 
@@ -36,7 +37,9 @@ class Catalog:
 
     def search_by_videogame_count(self, count: int) -> List[Machine]:
         """Searches for machines with a specific number of videogames."""
-        return [machine for machine in self.machines if len(machine.videogames) == count]
+        return [
+            machine for machine in self.machines if len(machine.videogames) == count
+        ]
 
     def search_by_material(self, material: str) -> List[Machine]:
         """Searches for machines with a specific type of material."""
@@ -45,11 +48,42 @@ class Catalog:
     def search_by_videogame_name(self, videogame_name: str) -> List[Machine]:
         """Searches for machines that have a specific videogame by name."""
         return [
-            machine for machine in self.machines
+            machine
+            for machine in self.machines
             if any(videogame.name == videogame_name for videogame in machine.videogames)
         ]
 
-#==========================================Client============================================
+    def search_by_price_range(
+        self, min_price: float, max_price: float
+    ) -> List[Machine]:
+        """Searches for machines within a specific price range."""
+        return [
+            machine
+            for machine in self.machines
+            if min_price <= machine.base_price <= max_price
+        ]
+
+    def search_by_weight_range(self, min_weight: int, max_weight: int) -> List[Machine]:
+        """Searches for machines within a specific weight range."""
+        return [
+            machine
+            for machine in self.machines
+            if min_weight <= machine.weight <= max_weight
+        ]
+
+    def search_by_power_consumption_range(
+        self, min_power: int, max_power: int
+    ) -> List[Machine]:
+        """Searches for machines within a specific power consumption range."""
+        return [
+            machine
+            for machine in self.machines
+            if min_power <= machine.power_consumption <= max_power
+        ]
+
+
+# ==========================================Client============================================
+
 
 class Client:
     """This class defines the clients of the arcade videogames machines."""
@@ -72,10 +106,10 @@ class Client:
             videogame_resolution (str): The resolution of the videogame
         """
         machine.videogames.append(videogame)
-        if videogame_resolution == 'HD':
-            machine.price = machine.price + videogame.price * (1 + 0.1)
-        elif videogame_resolution == 'SD':
-            machine.price = machine.price + videogame.price 
+        if videogame_resolution == "HD":
+            machine.price = machine.base_price + videogame.price * (1 + 0.1)
+        elif videogame_resolution == "SD":
+            machine.price = machine.base_price + videogame.price
 
     def remove_videogame_from_catalog(
         self, machine: Machine, videogame: Videogames, videogame_resolution: str
@@ -88,10 +122,11 @@ class Client:
             videogame_resolution (str): The resolution of the videogame
         """
         machine.videogames.remove(videogame)
-        if videogame_resolution == 'HD':
-            machine.price = machine.price - videogame.price * (1 + 0.1)
-        elif videogame_resolution == 'SD':
-            machine.price = machine.price - videogame.price
+        if videogame_resolution == "HD":
+            machine.price = machine.base_price - videogame.price * (1 + 0.1)
+        elif videogame_resolution == "SD":
+            machine.price = machine.base_price - videogame.price
+
 
 class Admin:
     """This class defines the admins of the arcade videogames machines."""
