@@ -29,7 +29,7 @@ class Catalog:
     """This class represents the catalog of machines registered in the system."""
 
     def __init__(self):
-        self.machines: List[Machine] = []  # Initialize as an empty list
+        self.machines: List[Machine] = []
 
     def add_machine(self, machine: Machine):
         """Adds a machine to the catalog."""

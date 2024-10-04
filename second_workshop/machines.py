@@ -68,10 +68,6 @@ class Machine(ABC):
             self.base_price = base_price * (1 + 0.2)
             self.power_consumption = power_consumption * (1 - 0.1)
 
-    def show_by_amount_of_videogames(self, amount: int):
-        """This method shows the videogames of the machine according to the amount specified."""
-        return [game for game in self.videogames if game.price > amount]
-
     def __str__(self) -> str:
         videogames_str = "\n".join(str(game) for game in self.videogames)
         return (
